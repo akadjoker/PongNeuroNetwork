@@ -41,13 +41,13 @@ class ANN:
             self.layers.append(Layer(num_outputs, num_inputs))
     
     def train(self, input_values, desired_output):
-        """Treina a rede com um conjunto de entradas e saídas desejadas."""
+
         output_values = self.calculate_output(input_values, desired_output)
         self.update_weights(output_values, desired_output)
         return output_values
     
     def calculate_output(self, input_values, desired_output=None):
-        """Calcula a saída da rede para um conjunto de entradas."""
+
         if desired_output is None:
             # Criar uma lista de zeros se não for fornecida uma saída desejada
             desired_output = [0] * self.num_outputs
@@ -56,7 +56,7 @@ class ANN:
         output_values = []
         current_input = 0
         
-        # Verificar se o número de entradas está correto
+
         if len(input_values) != self.num_inputs:
             print(f"ERRO: O número de entradas deve ser {self.num_inputs}")
             return output_values
@@ -130,11 +130,9 @@ class ANN:
                 self.layers[i].neurons[j].bias += bias_delta
     
     def activation_function(self, value):
-        """Função de ativação para camadas ocultas."""
         return self.tanh(value)
     
     def activation_function_output(self, value):
-        """Função de ativação para camada de saída."""
         return self.tanh(value)
     
     # def tanh(self, value):
@@ -167,11 +165,11 @@ class ANN:
                 # Guarda também o bias
                 weight_str += str(neuron.bias) + ","
         
-        # Remove a última vírgula
+
         if weight_str:
             weight_str = weight_str[:-1]
         
-        # Escreve para o ficheiro
+
         with open(filename, 'w') as f:
             f.write(weight_str)
         
